@@ -50,7 +50,11 @@ public class InfraRedCameraLightsServiceImpl implements InfraRedCameraLightsServ
 		restTemplate = new RestTemplate(getClientHttpRequestFactory());
 
 		logger.info("About to send POST to " + endpoint);
-		restTemplate.postForEntity(endpoint, new HttpEntity<String>(""), String.class);
+		try {
+			restTemplate.postForEntity(endpoint, new HttpEntity<String>(""), String.class);
+		} catch (Exception ex) {
+			logger.error("Failed sending initialise request", ex);
+		}
 	}
 
 	private ClientHttpRequestFactory getClientHttpRequestFactory() {
