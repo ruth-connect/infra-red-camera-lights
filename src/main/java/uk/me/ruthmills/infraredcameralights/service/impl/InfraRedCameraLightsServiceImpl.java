@@ -30,9 +30,6 @@ public class InfraRedCameraLightsServiceImpl implements InfraRedCameraLightsServ
 	@Value("${endpoint}")
 	private String endpoint;
 
-	@Value("${token}")
-	private String token;
-
 	private volatile GpioController gpio;
 	private volatile GpioPinDigitalOutput infraRedLeds;
 	private volatile GpioPinDigitalOutput redLed;
