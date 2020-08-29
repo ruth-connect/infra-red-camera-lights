@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.pi4j.io.gpio.GpioController;
@@ -23,6 +24,7 @@ import com.pi4j.io.gpio.GpioPinDigitalOutput;
 
 import uk.me.ruthmills.infraredcameralights.service.InfraRedCameraLightsService;
 
+@Service
 public class InfraRedCameraLightsServiceImpl implements InfraRedCameraLightsService {
 
 	@Value("${endpoint}")
