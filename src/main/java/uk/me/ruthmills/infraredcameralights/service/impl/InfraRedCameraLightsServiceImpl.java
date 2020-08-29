@@ -41,10 +41,10 @@ public class InfraRedCameraLightsServiceImpl implements InfraRedCameraLightsServ
 	public void initialise() {
 		gpio = GpioFactory.getInstance();
 
-		infraRedLeds = gpio.provisionDigitalOutputPin(GPIO_08, "Red LED", HIGH);
+		infraRedLeds = gpio.provisionDigitalOutputPin(GPIO_08, "Infra-Red LEDs", HIGH);
 		infraRedLeds.setShutdownOptions(true, HIGH);
 
-		redLed = gpio.provisionDigitalOutputPin(GPIO_09, "Amber LED", HIGH);
+		redLed = gpio.provisionDigitalOutputPin(GPIO_09, "Red LED", HIGH);
 		redLed.setShutdownOptions(true, HIGH);
 
 		restTemplate = new RestTemplate(getClientHttpRequestFactory());
@@ -77,11 +77,11 @@ public class InfraRedCameraLightsServiceImpl implements InfraRedCameraLightsServ
 
 	@Override
 	public void tick() {
-		infraRedLeds.low();
+		redLed.low();
 		try {
 			Thread.sleep(250);
 		} catch (InterruptedException ex) {
 		}
-		infraRedLeds.high();
+		redLed.high();
 	}
 }
